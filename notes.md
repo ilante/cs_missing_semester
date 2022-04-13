@@ -310,3 +310,25 @@ type commit = struct {
 ## Objects and content-addressing
 
 An 'object' is a blob, a tree or a commit:
+
+
+## Merging 
+
+
+On the example of `animal.py` 
+
+* First branch `main` (yup lets be PC)
+* Second branch `cat` changing script to add 'cat functionality'
+* Third branch `dog` changegin script to add `dog functionality`
+
+```
+i@cs_missing_semester %      git log --all --graph --decorate --oneline
+*   f2e837e (HEAD -> main) Merge branch 'dog'
+|\
+| * 71a852e (dog) add dog functionality
+* | dedfded (cat) add cat functionality
+|/
+```
+
+* Above we can see how branches `dog` and `cat` are parent sof the commit `f2e837e` bing` HEAD` pointing to `main`.
+
