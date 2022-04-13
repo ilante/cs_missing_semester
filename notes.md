@@ -241,3 +241,73 @@ Column-based editor. Parses based on whitespace seperated cols
 
 `git log --all --graph --decorate`
 
+## Snapshots
+
+* Git models the history of blobs (files) and trees (directories)
+* A 'tree' maps names to blobs or trees that it contains
+
+E.g.:
+
+```
+<root> (tree)
+|
++- foo (tree)
+|  |
+|  + bar.txt (blob, contents = "hello world")
+|
++- baz.txt (blob, contents = "git is wonderful")
+```
+
+* Top level tree `<root>` holds to elements: 'foo' which itself contains the blob 'bar.txt.'
+
+## Modelling history: relating snapshots called commits
+
+* History is a Directed Acyclic Graph (DAG) of snapshots called commits.
+    * Each snapshot in Git refers to a set of parents (preceding snapshots).
+    * Why a set of parents?
+        * Because a snapshot migt bescent from mulitple parents, e.g. due to merging two parallel branches of development.
+
+* each `o` represents a commit such that the history can be represented like below:
+* Each arrow points toward the parent of each commit in a 'comes before' relation
+```
+o <-- o <-- o <-- o
+            ^
+             \
+              --- o <-- o
+```
+* After the third commit, the history branches into two separated branches
+    * This can be useful when developing a new feature while fixing a bug independently from each other
+    * The separated branches can be merged in the future:
+
+```
+o <-- o <-- o <-- o <---- o
+            ^            /
+             \          v
+              --- o <-- o
+```
+* Commits are immutable!
+* While mistakes can be corrected, while all **edits**  to the commit history are creating **new commits**
+
+## Git's data model in pseudocode
+
+A simple model of history:
+```
+# a file is a bunch of bytes
+type blob = array<byte>
+
+# a directory contains named files and directories
+type tree = map<string, tree | blob>
+
+# a commit has parents, metadata, and the tob-level tree
+type commit = struct { 
+    parents: array<commit>
+    author: string
+    message: string
+    snapshot: tree
+}
+```
+
+## Objects and content-addressing
+
+An 'object' is a blob, a tree or a commit:
+
