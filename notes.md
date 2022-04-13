@@ -237,5 +237,7 @@ Column-based editor. Parses based on whitespace seperated cols
 
 # 6. [Version Control (Git)](https://missing.csail.mit.edu/2020/version-control/)
 
+![xkcd git](https://imgs.xkcd.com/comics/git.png)
+
 `git log --all --graph --decorate`
 
