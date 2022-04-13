@@ -310,4 +310,3 @@ type commit = struct {
 ## Objects and content-addressing
 
 An 'object' is a blob, a tree or a commit:
-
