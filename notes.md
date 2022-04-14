@@ -332,3 +332,20 @@ i@cs_missing_semester %      git log --all --graph --decorate --oneline
 
 * Above we can see how branches `dog` and `cat` are parent sof the commit `f2e837e` bing` HEAD` pointing to `main`.
 
+# [7. Debugging and Profiling](https://missing.csail.mit.edu/2020/debugging-profiling/)
+
+## Logging instead of just printing
+
+Advantages of logging:
+
+* Enables you to log to files, sockets and even remote servers instead of just `std out`.
+* Logging supports different severity levels: INFO, DEBUG, WARN, ERROR &c 
+    * This allows for filtering the output
+* New issues have a high chance of producing logs with sufficient information to detect the problem
+* Logs can be color coded.
+
+## Third party logs
+
+* Play a role when building larger sw systems likely have dependencies that run as separate programs (e.g. web servers, data baseso or message brokers).
+* You will need to read the logs of such dependencies.
+
