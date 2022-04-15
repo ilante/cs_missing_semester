@@ -348,4 +348,50 @@ Advantages of logging:
 
 * Play a role when building larger sw systems likely have dependencies that run as separate programs (e.g. web servers, data baseso or message brokers).
 * You will need to read the logs of such dependencies.
+* In UNIX systems programs write their logs under `/var/log`
+* System logs usually use `systemd` as system daemon
+    * It places logs under `/var/log/journal` 
+        * You can display the msgs using `journalctl`
+* MacOS has `/var/log/system.log` 
+* `log show` works on many systems
+* `sudo dmesg`
+
+* `logger` can be used to log under the system logs 
+
+```
+logger "Hello Logs"
+# On macOS
+log show --last 1m | grep Hello
+# On Linux
+journalctl --since "1m ago" | grep Hello
+```
+
+## Debuggers
+
+* Debuggers are programs that let you interact with the execution of a program and allow you to:
+    * Halt the execution of the program when a certain line is reached
+    * Step thrugh the program one instruction at a time
+    * Inspect the values of variables after the program chrashed
+    * Conditionally halt the execution when a fiven condition is met
+
+* Many programs come with some form of debugger (e.g. Python `pdb`)
+* `pdb` commands:
+    * `l` - list: Displays 11 lines around the current line or continues the previous listing 
+    * `s` - step: Executes the current line, stops at first possible occasion 
+    * `n` - next: Continue execution until the next line in the current function is reached, or it returns
+    * `b` - break: Sets a breakpoint depending on the argument that is provided
+    * `p` - print: Evaluated the expression in the current context and print its value (also `pp` pretty print)
+    * `r` - return: Continue execution until the current function returns 
+    * `q` - quit debugger
+
+Example code for debugging see video at [this location](hhttps://youtu.be/l812pUnKxME?t=750)
+
+We are debugging [`bubblesort.py`](https://github.com/ilante/cs_missing_semester/commit/d535e7fbe5cadd45f53e1145c4db2cf1d282e50f)
+* Here we use `ipdb` from: `conda install -c conda-forge ipdb`
+
+```
+$ python -m ipdb bubbple.py
+```
+
+* `pyflakes` for 
 
