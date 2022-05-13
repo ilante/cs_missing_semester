@@ -393,5 +393,8 @@ We are debugging [`bubblesort.py`](https://github.com/ilante/cs_missing_semester
 $ python -m ipdb bubbple.py
 ```
 
-* `pyflakes` for 
+* Static analysis tools
+    * `pyflakes`
+    * `mypy`
+
 
