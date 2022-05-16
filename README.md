@@ -4,3 +4,4 @@ Contains my notes and exercises.
 
 * All videolectures are [here](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57J)
 
+* [Debugging tutorial](https://github.com/spiside/pdb-tutorial)
